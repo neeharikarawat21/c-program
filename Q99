@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char date[20];
+    char day[3], month[3], year[5];
+
+    printf("Enter date (dd/04/yyyy): ");
+    scanf("%s", date);
+
+    // Extract parts
+    strncpy(day, date, 2);
+    day[2] = '\0';
+
+    strncpy(month, date + 3, 2);
+    month[2] = '\0';
+
+    strcpy(year, date + 6);
+
+    // Convert "04" to "Apr"
+    char monthName[10];
+    if (strcmp(month, "04") == 0)
+        strcpy(monthName, "Apr");
+    else
+        strcpy(monthName, "???");  // fallback
+
+    printf("Formatted date: %s-%s-%s\n", day, monthName, year);
+
+    return 0;
+}
